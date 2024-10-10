@@ -1,0 +1,9 @@
+# vscode temps
+.vscode/
+# node dependencies
+node_modules/
+# temp files
+misc/
+# vim temps
+*.*~
+*.SWP
