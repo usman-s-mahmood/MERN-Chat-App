@@ -60,10 +60,44 @@ export const signup = async (req, res) => {
     }
 }
 
-export const login = (req, res) => {
-    console.log('login'); 
+export const login = async (req, res) => {
+    try {
+        const {
+            username,
+            password
+        } = req.body;
+
+        const user = await User.findOne({username});
+
+        if (!user)
+            return res.status(404).json({error: "Request Failed! Try Again"});
+
+        const isPasswordCorrect = await bcryptjs.compare(
+            password,
+            user.password
+        );
+
+        if (!isPasswordCorrect)
+            return res.status(400).json({error: "Invalid Credits! Try Again"});
+
+        await generateTokenAndSetCookie(
+            user._id,
+            res
+        );
+
+        res.json({
+            _id: user._id,
+            fullName: user.fullName,
+            username: user.username,
+            profilePic: user.profilePic,
+        });
+
+    } catch(error) {
+        console.error(`Error in Signup Controller: ${error}`);
+        res.status(500).json({error: 'Internal Server Error'});
+    }
 }
 
-export const logout = (req, res) => {
-    console.log(`logout`);
+export const logout = async (req, res) => {
+    
 }
