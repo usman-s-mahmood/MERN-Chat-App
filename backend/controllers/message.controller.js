@@ -22,12 +22,16 @@ export const sendMessage = async (req, res) => {
 
         const newMessage = new Message({
             senderID,
-            id,
+            receiverID: id,
             message
         });
 
-        if (newMessage)
+        await newMessage.save();
+
+        if (newMessage) {
             conversation.message.push(newMessage._id);
+            conversation.save();
+        }
 
         res.json({message: 'Message Sent Successfully!'});
         
