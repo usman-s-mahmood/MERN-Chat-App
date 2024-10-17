@@ -26,17 +26,43 @@ export const sendMessage = async (req, res) => {
             message
         });
 
-        await newMessage.save();
-
-        if (newMessage) {
+        if (newMessage) 
             conversation.message.push(newMessage._id);
-            conversation.save();
-        }
+
+        // this will run in parallel and save more time
+
+        await Promise.all([newMessage.save(), conversation.save()]);
 
         res.json({message: 'Message Sent Successfully!'});
         
     } catch(error) {
         console.error(`Internal Server Error at sendMessage controller: ${error.message}`);
+        res.status(500).json({error: "Internal Server Error"});
+    }
+}
+
+export const getMessages = async (req, res) => {
+    try {
+        const {id: userToChatID} = req.params;
+
+        if (!isValidObjectId(userToChatID))
+            return res.status(403).json({error: "Invalid Request! Operation Failed"});
+
+        const senderID = req.user._id;
+
+        const conversation = await Conversation.findOne({
+            participants: {$all: [senderID, userToChatID]},
+        }).populate('message')
+
+        if (!conversation)
+            return res.status(404).json({error: 'Error While Processing the requests'});
+
+        const messages = conversation.message;
+
+        res.json(messages);
+
+    } catch(error) {
+        console.error(`Internal Server Error at getMessage controller: ${error.message}`);
         res.status(500).json({error: "Internal Server Error"});
     }
 }
