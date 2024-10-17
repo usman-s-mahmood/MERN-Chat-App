@@ -52,7 +52,7 @@ export const getMessages = async (req, res) => {
 
         const conversation = await Conversation.findOne({
             participants: {$all: [senderID, userToChatID]},
-        }).populate('message')
+        }).populate('message');
 
         if (!conversation)
             return res.status(404).json({error: 'Error While Processing the requests'});
