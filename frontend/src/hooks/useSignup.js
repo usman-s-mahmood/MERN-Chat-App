@@ -26,6 +26,7 @@ const useSignup = () => {
         if (!success) return ;
 
         try {
+            setLoading(true)
             const res = await fetch(
                 `${import.meta.env.VITE_API_HOST}/api/auth/signup`, {
                     method: 'POST',

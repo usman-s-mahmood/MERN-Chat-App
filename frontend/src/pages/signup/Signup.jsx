@@ -81,7 +81,7 @@ const Signup = () => {
           />
 
           <div className="text-center">
-            <button className="btn btn-block btn-sm mt-2" type='submit' disabled={loading}>{loading? 'Please Wait': 'Submit'}</button>
+            <button className="btn btn-block btn-sm mt-2" type='submit' disabled={loading}>{loading? (<span className='loading loading-spinner bg-white'></span>): 'Submit'}</button>
           </div>
 
           <div className="text-center mt-2">
