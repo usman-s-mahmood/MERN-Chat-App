@@ -15,7 +15,10 @@ dotenv.config({path: '../.env'});
 
 const PORT = process.env.PORT || 3000;
 
-app.use(cors())
+app.use(cors({
+    // origin: 'https://domain-name.com',
+    // credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
