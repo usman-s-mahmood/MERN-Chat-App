@@ -28,7 +28,7 @@ const useSignup = () => {
         try {
             setLoading(true)
             const res = await fetch(
-                `${import.meta.env.VITE_API_HOST}/api/auth/signup`, {
+                `/api/auth/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

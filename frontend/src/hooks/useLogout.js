@@ -11,7 +11,7 @@ const useLogout = () => {
         setLoading(true);
         try {
             const res = await fetch(
-                `${import.meta.env.VITE_API_HOST}/api/auth/logout`, {
+                `/api/auth/logout`, {
                     method: 'POST'
                 }
             );
