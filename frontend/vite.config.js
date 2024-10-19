@@ -8,7 +8,7 @@ export default defineConfig({
 		port: 3000,
 		proxy: {
 			"/api": {
-				target: "https://mernchat.app.genez.io/",
+				target: "http://localhost:5000",
 			},
 		},
 	},
