@@ -32,13 +32,13 @@ export const sendMessage = async (req, res) => {
 
         // this will run in parallel and save more time
 
+        await Promise.all([newMessage.save(), conversation.save()]);
+
         const receiverSocketId = getReceiverSocketId(id);
 
         if (receiverSocketId)
             io.to(receiverSocketId).emit("newMessage", newMessage);
-
-        await Promise.all([newMessage.save(), conversation.save()]);
-
+        
         res.json(newMessage);
         
     } catch(error) {
