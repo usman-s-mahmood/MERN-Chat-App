@@ -20,12 +20,13 @@ const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000;
 
-// app.use(cors({
-//     origin: 'https://mernchat.app.genez.io',
-//     // credentials: true
-// }));
+app.use(cors({
+    origin: 'https://mernchat.app.genez.io',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+    // credentials: true
+}));
 
-app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
