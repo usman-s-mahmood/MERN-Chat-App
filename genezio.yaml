@@ -4,7 +4,7 @@ frontend:
     scripts:
         build: npm run build
         deploy: npm install
-    subdomain: MERN-Chat-App
-name: MERN-Chat-App
+    subdomain: mern-chat
+name: mern-chat
 region: eu-central-1
 yamlVersion: 2
