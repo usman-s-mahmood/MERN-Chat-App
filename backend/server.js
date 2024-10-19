@@ -46,7 +46,7 @@ app.use(
 app.get(
     '/api/test',
     async (req, res) => {
-        res.json({message: "API Is Working!"});
+        return res.json({message: "API Is Working!"});
     }
 );
 
