@@ -5,7 +5,7 @@ dotenv.config({path: '../../.env'});
 
 const connectToMongoDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_DB_URI);
+        await mongoose.connect('mongodb://127.0.0.1:27017/mern_chat_app');
         console.log(`Connected To Mongo DB`);
     } catch(error) {
         console.error(`Error Connecting To MongoDB: ${error}`);

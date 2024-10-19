@@ -11,6 +11,7 @@ export const SocketContextProvider = ({children}) => {
 
     useEffect(() => {
         if (authUser) {
+            // update this URL in production in order to use socket IO
             const socket = io('http://localhost:5000', {
                 query: {
                     userId: authUser._id

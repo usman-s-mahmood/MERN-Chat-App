@@ -5,7 +5,7 @@ dotenv.config({path: '../../.env'});
 const generateTokenAndSetCookie = (userID, res) => {
     const token = jwt.sign(
         {userID},
-        process.env.JWT_SECTRET, {
+        'Nya5fbOSokk+TeO//AWJ1lwAWRWdXuJMMAZ4oT1qilU=', {
             expiresIn: '15d'
         }
     );

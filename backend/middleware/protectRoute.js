@@ -14,7 +14,7 @@ const protectRoute = async (req, res, next) => {
 
         const decoded = jwt.verify(
             token,
-            process.env.JWT_SECTRET
+            'Nya5fbOSokk+TeO//AWJ1lwAWRWdXuJMMAZ4oT1qilU='
         );
 
         if (!decoded)
