@@ -43,6 +43,13 @@ app.use(
     authRoutes
 );
 
+app.get(
+    '/api/test',
+    async (req, res) => {
+        res.json({message: "API Is Working!"});
+    }
+);
+
 app.use(
     '/api/messages',
     messageRoutes
