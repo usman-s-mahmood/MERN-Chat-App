@@ -3,6 +3,9 @@ frontend:
     publish: ""
     scripts:
         build: npm run build
+        deploy: npm install
+    subdomain: mern-chat
+name: mern-chat
         deploy: npm start
     subdomain: MERN-Chat-App
 name: MERN-Chat-App
