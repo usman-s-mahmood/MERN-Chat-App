@@ -33,7 +33,7 @@ export const sendMessage = async (req, res) => {
 
         await Promise.all([newMessage.save(), conversation.save()]);
 
-        res.json({message: 'Message Sent Successfully!'});
+        res.json(newMessage);
         
     } catch(error) {
         console.error(`Internal Server Error at sendMessage controller: ${error.message}`);
@@ -55,7 +55,7 @@ export const getMessages = async (req, res) => {
         }).populate('message');
 
         if (!conversation)
-            return res.status(404).json({error: 'Error While Processing the requests'});
+            return res.json({message: {}});
 
         const messages = conversation.message;
 
