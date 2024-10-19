@@ -9,8 +9,10 @@ import messageRoutes from './routes/message.routes.js'
 import userRoutes from './routes/user.routes.js'
 // Database Connector
 import connectToMongoDB from './db/connectToMongoDB.js';
+// Socket IO
+import { server, app } from './socket/socket.js';
 
-const app = express();
+
 dotenv.config({path: '../.env'});
 
 const PORT = process.env.PORT || 3000;
@@ -44,7 +46,7 @@ app.use(
     userRoutes
 );
 
-app.listen(
+server.listen(
     PORT,
     async () => {
         connectToMongoDB();

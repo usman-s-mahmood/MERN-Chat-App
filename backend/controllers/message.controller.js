@@ -1,6 +1,7 @@
 import { isValidObjectId } from "mongoose";
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 
 export const sendMessage = async (req, res) => {
@@ -30,6 +31,11 @@ export const sendMessage = async (req, res) => {
             conversation.message.push(newMessage._id);
 
         // this will run in parallel and save more time
+
+        const receiverSocketId = getReceiverSocketId(id);
+
+        if (receiverSocketId)
+            io.to(receiverSocketId).emit("newMessage", newMessage);
 
         await Promise.all([newMessage.save(), conversation.save()]);
 
