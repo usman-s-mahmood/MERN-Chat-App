@@ -30,6 +30,7 @@ const useLogin = () => {
 
             toast.success('You Are Now Logged Into The Website');
         } catch(error) {
+            console.log(error);
             toast.error(error.message || error);
         } finally {
             setLoading(false);
