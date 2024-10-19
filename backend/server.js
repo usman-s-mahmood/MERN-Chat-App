@@ -14,7 +14,7 @@ import connectToMongoDB from './db/connectToMongoDB.js';
 import { server, app } from './socket/socket.js';
 
 
-dotenv.config({path: '../.env'});
+dotenv.config();
 
 const __dirname = path.resolve();
 

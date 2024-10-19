@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import User from '../models/user.model.js';
 import { isValidObjectId } from 'mongoose';
 
-dotenv.config({path: '../../.env'});
+dotenv.config();
 
 const protectRoute = async (req, res, next) => {
     try {
@@ -14,7 +14,7 @@ const protectRoute = async (req, res, next) => {
 
         const decoded = jwt.verify(
             token,
-            'Nya5fbOSokk+TeO//AWJ1lwAWRWdXuJMMAZ4oT1qilU='
+            process.env.JWT_SECTRET
         );
 
         if (!decoded)
