@@ -3,7 +3,7 @@ frontend:
     publish: ""
     scripts:
         build: npm run build
-        deploy: npm install
+        deploy: npm start
     subdomain: MERN-Chat-App
 name: MERN-Chat-App
 region: eu-central-1
