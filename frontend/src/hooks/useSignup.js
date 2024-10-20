@@ -50,6 +50,7 @@ const useSignup = () => {
             toast.success(`You Are Now Registered!`);
             return ;
         } catch(error) {
+            console.log(`Error From Catch Block: ${error}`);
             toast.error(error.message);
         } finally {
             setLoading(false);
