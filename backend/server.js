@@ -18,7 +18,7 @@ dotenv.config();
 
 const __dirname = path.resolve();
 
-const PORT = 3000;
+const PORT = 5000;
 
 // app.use(cors({
 //     origin: 'https://mernchat.app.genez.io',
@@ -64,7 +64,8 @@ app.use(
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+    // res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+    return res.json({message: "API Is Working!"});
 });
 
 server.listen(
