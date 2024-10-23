@@ -18,7 +18,7 @@ dotenv.config();
 
 const __dirname = path.resolve();
 
-const PORT = process.env.PORT || 5000;
+const PORT = 3000;
 
 // app.use(cors({
 //     origin: 'https://mernchat.app.genez.io',
