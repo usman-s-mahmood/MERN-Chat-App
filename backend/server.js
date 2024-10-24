@@ -20,11 +20,11 @@ const __dirname = path.resolve();
 
 const PORT = 5000;
 
-app.use(cors({
-    origin: 'https://mernchat-sigma.vercel.app/,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
-    credentials: true
-}));
+// app.use(cors({
+//     origin: 'https://mernchat-sigma.vercel.app/',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+//     credentials: true
+// }));
 
 // app.use(cors());
 
